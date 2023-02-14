@@ -31,6 +31,6 @@ public class Cidade {
 	private Date dataAtualizacao;
 	
 	@ManyToOne
-	@JoinColumn("idEstado")
+	@JoinColumn(name="idEstado")
 	private Estado estado;
 }
