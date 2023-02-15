@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.devmocroski.backend.entity.Cidade;
 import com.devmocroski.backend.repository.CidadeRepository;
 
+@Service
 public class CidadeService {
 	
 	@Autowired
