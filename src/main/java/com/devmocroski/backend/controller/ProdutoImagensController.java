@@ -11,36 +11,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.devmocroski.backend.entity.Produto;
-import com.devmocroski.backend.service.ProdutoService;
+import com.devmocroski.backend.entity.ProdutoImagens;
+import com.devmocroski.backend.service.ProdutoImagensService;
 
 @RestController
-@RequestMapping("api/produto")
-public class ProdutoController {
+@RequestMapping("/api/produtoImagens")
+public class ProdutoImagensController {
 
 	@Autowired
-	private ProdutoService produtoService;
+	private ProdutoImagensService produtoImagensService;
 	
 	@GetMapping("/")
-	public List<Produto> buscarTodos() {
-		return produtoService.buscarTodos();
+	public List<ProdutoImagens> buscarTodos() {
+		return produtoImagensService.buscarTodos();
 	}
 	
 	@PostMapping("/")
-	public Produto inserir(@RequestBody Produto obj) {
-		return produtoService.inserir(obj);
+	public ProdutoImagens inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file) {
+		return produtoImagensService.inserir(idProduto, file);
 	}
 	
 	@PutMapping("/")
-	public Produto alterar(@RequestBody Produto obj) {
-		return produtoService.alterar(obj);
+	public ProdutoImagens alterar(@RequestBody ProdutoImagens obj) {
+		return produtoImagensService.alterar(obj);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-		produtoService.excluir(id);
+		produtoImagensService.excluir(id);
 		return ResponseEntity.ok().build();
 	}
 }
+
