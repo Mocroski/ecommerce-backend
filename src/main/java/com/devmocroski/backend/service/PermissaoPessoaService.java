@@ -22,13 +22,14 @@ public class PermissaoPessoaService {
 	private PermissaoRepository permissaoRepository;
 	
 	public void vincularPessoaPermissaoCliente(Pessoa pessoa) {
-		List<Permissao> listaPermissao = permissaoRepository.findByNome(nome: "cliente");
+		List<Permissao> listaPermissao = permissaoRepository.findByNome("cliente");
 		if(listaPermissao.size()>0) {
 			PermissaoPessoa permissaoPessoa = new PermissaoPessoa();
 			permissaoPessoa.setPessoa(pessoa);
-			permissaoPessoa.setPermissao(listaPermissao.get(index:0));
+			permissaoPessoa.setPermissao(listaPermissao.get(0));
 			permissaoPessoa.setDataCriacao(new Date());
 			permissaoPessoaRepository.saveAndFlush(permissaoPessoa);
+			
 		}
 	}
 }
