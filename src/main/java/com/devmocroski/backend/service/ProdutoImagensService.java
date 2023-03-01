@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devmocroski.backend.entity.Produto;
@@ -14,6 +15,7 @@ import com.devmocroski.backend.entity.ProdutoImagens;
 import com.devmocroski.backend.repository.ProdutoImagensRepository;
 import com.devmocroski.backend.repository.ProdutoRepository;
 
+@Service
 public class ProdutoImagensService {
 
 	@Autowired
