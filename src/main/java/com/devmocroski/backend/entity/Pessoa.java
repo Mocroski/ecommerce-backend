@@ -16,11 +16,14 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name = "pessoa")
 @Data
+@Getter
+@Setter
 public class Pessoa {
 
 	@Id
@@ -32,6 +35,11 @@ public class Pessoa {
 	private String cpf;
 	
 	private String email;
+	
+	private String codigoRecuperacaoSenha;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataEnvioCodigo;
 	
 	private String senha;
 	
