@@ -15,12 +15,12 @@ import com.devmocroski.backend.service.PessoaClienteService;
 public class PessoaClienteController {
 
 	@Autowired
-	private PessoaClienteService pessoaService;
+	private PessoaClienteService pessoaClienteService;
 	
 	@PostMapping("/")
 	public Pessoa inserir(@RequestBody PessoaClienteRequestDTO pessoaClienteRequestDTO) {
 		
-		return pessoaService.registrar(pessoaClienteRequestDTO);
+		return pessoaClienteService.registrar(pessoaClienteRequestDTO);
 	}
 }
  
