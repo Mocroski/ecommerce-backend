@@ -1,6 +1,8 @@
 package com.devmocroski.backend.service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,11 @@ public class PessoaClienteService {
 		pessoa.setDataCriacao(new Date());
 		Pessoa objetoNovo = pessoaClienteRepository.saveAndFlush(pessoa);
 		permissaoPessoaService.vincularPessoaPermissaoCliente(objetoNovo);
-		emailService.enviarEmailTexto(objetoNovo.getEmail(), "Cadastro E-commerce teste", "Cadastro realizado com sucesso bem vindo" + objetoNovo.getNome());
+		//emailService.enviarEmailTexto(objetoNovo.getEmail(), "Cadastro E-commerce teste", "Cadastro realizado com sucesso bem vindo" + objetoNovo.getNome());
+		Map<String, Object> propMap = new HashMap<>();
+		propMap.put("nome", objetoNovo.getNome());
+		propMap.put("mensagem", "Cadastro realizado com sucesso bem vindo");
+		emailService.enviarEmailTemplate(objetoNovo.getEmail(), "Cadastro Loja Teste", propMap);
 		return objetoNovo;
 	}
 	
